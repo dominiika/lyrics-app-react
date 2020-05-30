@@ -4,6 +4,7 @@ import ContentListDarkInfo from "./ContentListDarkInfo";
 class ContentListDarkFetch extends Component {
   state = {
     artists: [],
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -18,12 +19,17 @@ class ContentListDarkFetch extends Component {
       }
     )
       .then((resp) => resp.json())
-      .then((res) => this.setState({ artists: res.results }))
+      .then((res) => this.setState({ artists: res.results, isLoading: false }))
       .catch((error) => console.log(error));
   };
 
   render() {
-    return <ContentListDarkInfo artists={this.state.artists} />;
+    return (
+      <ContentListDarkInfo
+        artists={this.state.artists}
+        isLoading={this.state.isLoading}
+      />
+    );
   }
 }
 

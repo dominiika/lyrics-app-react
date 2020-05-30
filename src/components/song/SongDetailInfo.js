@@ -126,7 +126,9 @@ function SongDetailInfo(props) {
             ) : null}
           </Container>
         </React.Fragment>
-      ) : null}
+      ) : (
+        <p className="text-center">loading...</p>
+      )}
 
       {props.showLoginView ? (
         <MainAuthModal
@@ -145,6 +147,7 @@ SongDetailInfo.propTypes = {
   onLoadSong: PropTypes.func.isRequired,
   onToggleShowLoginView: PropTypes.func.isRequired,
   cookies: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default withRouter(SongDetailInfo);

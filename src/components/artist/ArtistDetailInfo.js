@@ -23,7 +23,7 @@ function ArtistDetailInfo(props) {
             <br />
 
             <Row>
-              {props.artistsSongs.length !== 0 ? (
+              {!props.isLoading ? (
                 <Fragment>
                   {props.artistsSongs.map((song) => {
                     return (
@@ -82,7 +82,11 @@ function ArtistDetailInfo(props) {
             <p className="purple">{props.artist.user_str}</p>
           </Container>
         </React.Fragment>
-      ) : null}
+      ) : (
+        <Container>
+          <p className="text-center">loading...</p>
+        </Container>
+      )}
     </div>
   );
 }
@@ -92,6 +96,7 @@ ArtistDetailInfo.propTypes = {
   artistsSongs: PropTypes.array.isRequired,
   cookies: PropTypes.object.isRequired,
   onLoadArtist: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default withRouter(ArtistDetailInfo);

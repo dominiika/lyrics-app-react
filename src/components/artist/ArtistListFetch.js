@@ -9,6 +9,7 @@ class ArtistListFetch extends Component {
     artistsPerPage: 10,
     numberOfPages: 1,
     firstIndex: 1,
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -30,7 +31,11 @@ class ArtistListFetch extends Component {
       .then((resp) => resp.json())
       .then((res) => {
         let numberOfPages = Math.ceil(res.count / this.state.artistsPerPage);
-        this.setState({ artists: res.results, numberOfPages: numberOfPages });
+        this.setState({
+          artists: res.results,
+          numberOfPages: numberOfPages,
+          isLoading: false,
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -49,6 +54,7 @@ class ArtistListFetch extends Component {
         onFetchArtists={this.handleFetchArtists}
         numberOfPages={this.state.numberOfPages}
         firstIndex={this.state.firstIndex}
+        isLoading={this.state.isLoading}
       />
     );
   }

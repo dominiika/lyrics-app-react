@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 class ContentListWhiteFetch extends Component {
   state = {
     songs: [],
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class ContentListWhiteFetch extends Component {
       headers: {},
     })
       .then((resp) => resp.json())
-      .then((res) => this.setState({ songs: res.results }))
+      .then((res) => this.setState({ songs: res.results, isLoading: false }))
       .catch((error) => console.log(error));
   };
 
@@ -43,6 +44,7 @@ class ContentListWhiteFetch extends Component {
         songs={this.state.songs}
         title={title}
         info={info}
+        isLoading={this.state.isLoading}
       />
     );
   }

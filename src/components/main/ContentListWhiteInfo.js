@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Container } from "react-bootstrap";
 import SongChart from "../song/SongChart";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function ContentListWhiteInfo(props) {
+  console.log(props.isLoading);
   return (
     <div className="white-container">
       <Container>
@@ -15,6 +16,7 @@ function ContentListWhiteInfo(props) {
             title={props.title}
             info={props.info}
             firstIndex={1}
+            isLoading={props.isLoading}
           />
           <div className="center-btn">
             <Link to="/lyrics/">
@@ -31,6 +33,7 @@ ContentListWhiteInfo.propTypes = {
   songs: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   info: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default ContentListWhiteInfo;

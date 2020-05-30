@@ -9,6 +9,7 @@ class ArtistDetailFetch extends Component {
     id: Number(this.props.match.params.id),
     artist: {},
     artistsSongs: [],
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -29,12 +30,13 @@ class ArtistDetailFetch extends Component {
     })
       .then((resp) => resp.json())
       .then((res) => {
-        this.setState({ artist: res });
+        this.setState({ artist: res, isLoading: false });
       })
       .catch((error) => console.log(error));
   };
 
   fetchSongs = (artistId) => {
+    this.setState({ isLoading: true });
     fetch(`${process.env.REACT_APP_API_URL}/api/songs/?artist=${artistId}`, {
       method: "GET",
     })
@@ -42,6 +44,7 @@ class ArtistDetailFetch extends Component {
       .then((res) => {
         this.setState({ artistsSongs: res });
       })
+      .then(this.setState({ isLoading: false }))
       .catch((error) => console.log(error));
   };
 
@@ -58,6 +61,7 @@ class ArtistDetailFetch extends Component {
             artistsSongs={this.state.artistsSongs}
             cookies={this.props.cookies}
             onLoadArtist={this.handleLoadArtist}
+            isLoading={this.state.isLoading}
           />
         ) : (
           <NotFound />

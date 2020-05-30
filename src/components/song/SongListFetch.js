@@ -9,6 +9,7 @@ class SongListFetch extends Component {
     songsPerPage: 10,
     numberOfPages: 1,
     firstIndex: 1,
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -27,7 +28,11 @@ class SongListFetch extends Component {
       .then((resp) => resp.json())
       .then((res) => {
         let numberOfPages = Math.ceil(res.count / this.state.songsPerPage);
-        this.setState({ songs: res.results, numberOfPages: numberOfPages });
+        this.setState({
+          songs: res.results,
+          numberOfPages: numberOfPages,
+          isLoading: false,
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -46,6 +51,7 @@ class SongListFetch extends Component {
         onFetchSongs={this.handleFetchSongs}
         numberOfPages={this.state.numberOfPages}
         firstIndex={this.state.firstIndex}
+        isLoading={this.state.isLoading}
       />
     );
   }

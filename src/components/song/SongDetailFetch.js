@@ -9,6 +9,7 @@ class SongDetailFetch extends Component {
     id: Number(this.props.match.params.id),
     song: {},
     showLoginView: false,
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -27,7 +28,7 @@ class SongDetailFetch extends Component {
     })
       .then((resp) => resp.json())
       .then((res) => {
-        this.setState({ song: res });
+        this.setState({ song: res, isLoading: false });
       })
       .catch((error) => console.log(error));
   };
@@ -50,6 +51,7 @@ class SongDetailFetch extends Component {
             onLoadSong={this.handleLoadSong}
             onToggleShowLoginView={this.handleToggleShowLoginView}
             cookies={this.props.cookies}
+            isLoading={this.state.isLoading}
           />
         ) : (
           <NotFound />

@@ -16,6 +16,7 @@ function SongListInfo(props) {
             title={title}
             info={info}
             firstIndex={props.firstIndex}
+            isLoading={props.isLoading}
           />
           <PaginationList
             results={props.songs}
@@ -36,6 +37,7 @@ SongListInfo.propTypes = {
   numberOfPages: PropTypes.number.isRequired,
   onFetchSongs: PropTypes.func.isRequired,
   firstIndex: PropTypes.number,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default SongListInfo;

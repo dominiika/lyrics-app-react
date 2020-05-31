@@ -14,7 +14,7 @@ class AddSongFetch extends Component {
     titleError: "",
     serverError: null,
     genresError: "",
-    alert: "",
+    loadingAlert: "",
   };
 
   componentDidMount() {
@@ -135,7 +135,7 @@ class AddSongFetch extends Component {
 
   handleFetchLyricsAPI = () => {
     this.handleStateChange("titleError", "");
-    this.handleStateChange("alert", "loading...");
+    this.handleStateChange("loadingAlert", "loading...");
     let artistObj = this.state.artistsList.find((el) => {
       return el.id === this.state.artist;
     });
@@ -154,10 +154,11 @@ class AddSongFetch extends Component {
       .then((resp) => resp.json())
       .then((res) => {
         if (!res.lyrics) {
+          this.handleStateChange("loadingAlert", "");
           alert("No lyrics found!");
         } else {
           this.handleStateChange("lyrics", res.lyrics);
-          this.handleStateChange("alert", "");
+          this.handleStateChange("loadingAlert", "");
         }
       })
       .catch((error) => console.log(error));
@@ -179,7 +180,7 @@ class AddSongFetch extends Component {
         onGenreChange={this.handleGenreChange}
         onAddSong={this.handleAddSong}
         onFetchLyricsAPI={this.handleFetchLyricsAPI}
-        alert={this.state.alert}
+        loadingAlert={this.state.loadingAlert}
       />
     );
   }

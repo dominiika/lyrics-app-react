@@ -45,12 +45,14 @@ function SongDetailInfo(props) {
                   ) : (
                     <Fragment>
                       <p className="mt-1 ml-2 text-muted">NO LYRICS ADDED...</p>
-                      <EditLyricsModal
-                        song={props.song}
-                        onLoadSong={props.onLoadSong}
-                        cookies={props.cookies}
-                        type={"add"}
-                      />
+                      {props.cookies.get("token") ? (
+                        <EditLyricsModal
+                          song={props.song}
+                          onLoadSong={props.onLoadSong}
+                          cookies={props.cookies}
+                          type={"add"}
+                        />
+                      ) : null}
                     </Fragment>
                   )}
                 </div>

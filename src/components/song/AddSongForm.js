@@ -71,7 +71,7 @@ function AddSongForm(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <p className="mr-2">{props.alert}</p>
+          <p className="loading-alert">{props.loadingAlert}</p>
           <Button
             variant="btn btn-outline-dark"
             onClick={props.onFetchLyricsAPI}
@@ -103,6 +103,7 @@ AddSongForm.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onAddSong: PropTypes.func.isRequired,
   onFetchLyricsAPI: PropTypes.func.isRequired,
+  loadingAlert: PropTypes.string.isRequired,
 };
 
 export default AddSongForm;

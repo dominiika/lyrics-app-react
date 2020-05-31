@@ -1026,3 +1026,9 @@ footer h1 {
   padding-right: 0;
   margin-bottom: 30px;
 }
+
+@media all and (max-width: 575px) {
+  .loading-alert {
+    font-size: 2vw;
+  }
+}

@@ -8,7 +8,7 @@ function EditLyricsFetch(props) {
   const [title] = useState(props.song.title);
   const [artist] = useState(props.song.artist);
   const [genres] = useState(props.song.genres);
-  const [alert, setAlert] = useState("");
+  const [loadingAlert, setLoadingAlert] = useState("");
 
   const handleInputChange = (event) => {
     setLyrics(event.target.value);
@@ -36,7 +36,7 @@ function EditLyricsFetch(props) {
   };
 
   const handleFetchLyricsAPI = () => {
-    setAlert("loading...");
+    setLoadingAlert("loading...");
     fetch(`${process.env.REACT_APP_API_URL}/api/songs/fetch/`, {
       method: "POST",
       headers: {
@@ -51,10 +51,11 @@ function EditLyricsFetch(props) {
       .then((resp) => resp.json())
       .then((res) => {
         if (!res.lyrics) {
+          setLoadingAlert("");
           alert("No lyrics found!");
         } else {
           setLyrics(res.lyrics);
-          setAlert("");
+          setLoadingAlert("");
         }
       })
       .catch((error) => console.log(error));
@@ -69,7 +70,7 @@ function EditLyricsFetch(props) {
       onInputChange={handleInputChange}
       onUpdateLyrics={handleUpdateLyrics}
       onFetchLyricsAPI={handleFetchLyricsAPI}
-      alert={alert}
+      loadingAlert={loadingAlert}
     />
   );
 }

@@ -18,7 +18,7 @@ function EditLyricsForm(props) {
         </Form.Group>
 
         <Modal.Footer>
-          <p className="mr-2">{props.alert}</p>
+          <p className="loading-alert">{props.loadingAlert}</p>
           <Button
             variant="btn btn-outline-dark"
             onClick={props.onFetchLyricsAPI}
@@ -44,6 +44,7 @@ EditLyricsForm.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onUpdateLyrics: PropTypes.func.isRequired,
   onFetchLyricsAPI: PropTypes.func.isRequired,
+  loadingAlert: PropTypes.string.isRequired,
 };
 
 export default EditLyricsForm;

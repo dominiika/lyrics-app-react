@@ -25,48 +25,54 @@ function ArtistDetailInfo(props) {
             <Row>
               {!props.isLoading ? (
                 <Fragment>
-                  {props.artistsSongs.map((song) => {
-                    return (
-                      <Col
-                        lg={3}
-                        md={4}
-                        sm={6}
-                        xs={12}
-                        key={song.id}
-                        className="mb-4"
-                      >
-                        <Row>
-                          <Col lg={5} md={5} sm={5} xs={6}>
-                            <Link to={`/lyrics/${song.id}`}>
-                              {song.spotify_album_image ? (
-                                <img
-                                  src={song.spotify_album_image}
-                                  alt="No pic"
-                                  className="img-fluid img-background sm-back-img"
-                                />
-                              ) : (
-                                <img
-                                  src={song.image}
-                                  alt="No pic"
-                                  className="img-fluid img-background sm-back-img"
-                                />
-                              )}
-                            </Link>
+                  {props.artistsSongs.length !== 0 ? (
+                    <Fragment>
+                      {props.artistsSongs.map((song) => {
+                        return (
+                          <Col
+                            lg={3}
+                            md={4}
+                            sm={6}
+                            xs={12}
+                            key={song.id}
+                            className="mb-4"
+                          >
+                            <Row>
+                              <Col lg={5} md={5} sm={5} xs={6}>
+                                <Link to={`/lyrics/${song.id}`}>
+                                  {song.spotify_album_image ? (
+                                    <img
+                                      src={song.spotify_album_image}
+                                      alt="No pic"
+                                      className="img-fluid img-background sm-back-img"
+                                    />
+                                  ) : (
+                                    <img
+                                      src={song.image}
+                                      alt="No pic"
+                                      className="img-fluid img-background sm-back-img"
+                                    />
+                                  )}
+                                </Link>
+                              </Col>
+                              <Col lg={7} md={5} sm={7} xs={6}>
+                                <Link to={`/lyrics/${song.id}`}>
+                                  <p className="float-left">{song.title}</p>
+                                </Link>
+                              </Col>
+                            </Row>
                           </Col>
-                          <Col lg={7} md={5} sm={7} xs={6}>
-                            <Link to={`/lyrics/${song.id}`}>
-                              <p className="float-left">{song.title}</p>
-                            </Link>
-                          </Col>
-                        </Row>
-                      </Col>
-                    );
-                  })}
+                        );
+                      })}
+                    </Fragment>
+                  ) : (
+                    <p className="text-muted no-songs-info">
+                      {props.artist.name.toUpperCase()} has no songs
+                    </p>
+                  )}
                 </Fragment>
               ) : (
-                <p className="text-muted no-songs-info">
-                  {props.artist.name.toUpperCase()} has no songs
-                </p>
+                <p>loading...</p>
               )}
             </Row>
 

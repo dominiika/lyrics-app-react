@@ -715,7 +715,7 @@ a:hover {
 }
 
 .no-songs-info {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   padding-left: 1.1rem;
 }
 
@@ -788,7 +788,7 @@ a:hover {
 
 @media all and (max-width: 380px) {
   .detail-content-banner-artist {
-    height: 430px;
+    height: 450px;
   }
 }
 
@@ -999,6 +999,7 @@ footer h1 {
 .modal-content {
   border: solid black 2px;
   border-radius: 0;
+  top: 40px;
 }
 
 .form-control {

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function ContentListWhiteInfo(props) {
-  console.log(props.isLoading);
   return (
     <div className="white-container">
       <Container>

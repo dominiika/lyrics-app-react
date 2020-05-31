@@ -708,7 +708,7 @@ a:hover {
 }
 
 @media all and (min-height: 900px) {
-  .artist-detail,
+  .artist-detail-container,
   .error-container {
     min-height: 700px;
   }
@@ -730,6 +730,10 @@ a:hover {
     grid-template-columns: 50% 50%;
   }
 
+  .artist-detail > .genres p {
+    font-size: 1.5vw;
+  }
+
   .lg-back-img {
     top: 25px;
   }
@@ -748,7 +752,15 @@ a:hover {
 /* small */
 @media all and (max-width: 767px) {
   .detail-content-banner-artist {
-    height: 600px;
+    height: 660px;
+  }
+
+  .artist-detail > .genres {
+    grid-template-columns: 100%;
+  }
+
+  .artist-detail > .genres p {
+    font-size: 1.8vw;
   }
 }
 
@@ -759,7 +771,7 @@ a:hover {
 /* extra small */
 @media all and (max-width: 575px) {
   .detail-content-banner-artist {
-    height: 500px;
+    height: 580px;
   }
 
   .artist-detail-row {
@@ -784,11 +796,15 @@ a:hover {
   .artist-detail p {
     font-size: 4vw;
   }
+
+  .artist-detail > .genres p {
+    font-size: 3.2vw;
+  }
 }
 
 @media all and (max-width: 380px) {
   .detail-content-banner-artist {
-    height: 450px;
+    height: 540px;
   }
 }
 

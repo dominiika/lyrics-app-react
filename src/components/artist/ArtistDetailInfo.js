@@ -16,7 +16,7 @@ function ArtistDetailInfo(props) {
             cookies={props.cookies}
           />
 
-          <Container className="mt-4 artist-detail">
+          <Container className="mt-4 artist-detail-container">
             <h2 className="">
               <strong>{props.artist.name.toUpperCase()}'S SONGS</strong>
             </h2>

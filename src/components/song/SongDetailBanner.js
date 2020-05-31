@@ -14,7 +14,6 @@ class SongDetailBanner extends Component {
     let newActiveGenres = this.state.activeGenres;
     newActiveGenres[index] = !newActiveGenres[index];
     this.setState({ activegenres: newActiveGenres });
-    console.log(this.state.activeGenres);
   };
 
   render() {
@@ -72,8 +71,9 @@ class SongDetailBanner extends Component {
                             <p
                               key={index}
                               className={`genre ${
-                                this.state.activeGenres[index] &&
-                                "genre-extended"
+                                this.state.activeGenres[index]
+                                  ? "genre-extended"
+                                  : ""
                               }`}
                               title={genre}
                               onClick={() => this.toggleSetActive(index)}

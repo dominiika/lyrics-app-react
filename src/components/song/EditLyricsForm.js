@@ -18,6 +18,7 @@ function EditLyricsForm(props) {
         </Form.Group>
 
         <Modal.Footer>
+          <p className="mr-2">{props.alert}</p>
           <Button
             variant="btn btn-outline-dark"
             onClick={props.onFetchLyricsAPI}

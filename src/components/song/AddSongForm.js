@@ -71,6 +71,7 @@ function AddSongForm(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
+          <p className="mr-2">{props.alert}</p>
           <Button
             variant="btn btn-outline-dark"
             onClick={props.onFetchLyricsAPI}

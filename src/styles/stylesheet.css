@@ -163,7 +163,7 @@ body {
   .song-chart h5,
   .artist-chart h5,
   .artist-chart p {
-    font-size: 3.8vw;
+    font-size: 3.5vw;
     padding-left: 0;
   }
 
@@ -179,7 +179,7 @@ body {
 
   .song-chart-rating {
     padding: 0;
-    font-size: 3.8vw;
+    font-size: 3.5vw;
   }
 
   .content-row-artists .img-background {
@@ -494,6 +494,12 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
+  cursor: pointer;
+}
+
+.genre-extended {
+  overflow: visible;
+  display: inline-block;
 }
 
 .black-genre {
@@ -614,8 +620,11 @@ a:hover {
 
 /* extra small */
 @media all and (max-width: 575px) {
-  .lyrics-lines {
-    font-size: 3vw;
+  .lyrics-lines,
+  .yt-player p,
+  .comment-list p,
+  .more-info p {
+    font-size: 4vw;
   }
 
   .song-detail p {
@@ -645,8 +654,9 @@ a:hover {
     font-weight: bolder;
   }
 
-  .genre {
-    font-size: 0.8vw;
+  .genres {
+    margin: auto 0;
+    grid-template-columns: 100%;
   }
 
   .rate-container {
@@ -656,7 +666,7 @@ a:hover {
 
 @media all and (max-width: 490px) {
   .detail-content-banner {
-    height: 790px;
+    height: 800px;
   }
   .rating i {
     font-size: 6.5vw;
@@ -666,7 +676,7 @@ a:hover {
 
 @media all and (max-width: 400px) {
   .detail-content-banner {
-    height: 740px;
+    height: 720px;
   }
 }
 
@@ -769,6 +779,10 @@ a:hover {
 
   .artist-detail > h2 {
     font-size: 5vw;
+  }
+
+  .artist-detail p {
+    font-size: 4vw;
   }
 }
 
@@ -985,7 +999,6 @@ footer h1 {
 .modal-content {
   border: solid black 2px;
   border-radius: 0;
-  top: 50px;
 }
 
 .form-control {

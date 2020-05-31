@@ -66,12 +66,32 @@ function SongDetailInfo(props) {
               </Col>
             </Row>
 
-            {props.cookies.get("token") ? (
-              <Fragment>
-                {props.cookies.get("username") === props.song.user_str ? (
-                  <Fragment>
+            <div className="more-info">
+              {props.cookies.get("token") ? (
+                <Fragment>
+                  {props.cookies.get("username") === props.song.user_str ? (
+                    <Fragment>
+                      <Row className="edit-delete-btns">
+                        <Col xs={4} sm={3} md={2} lg={2}>
+                          <EditLyricsModal
+                            song={props.song}
+                            onLoadSong={props.onLoadSong}
+                            cookies={props.cookies}
+                            type={"edit"}
+                          />
+                        </Col>
+                        <Col xs={8} sm={9} md={10} lg={10}>
+                          <DeleteSongFetch
+                            song={props.song}
+                            onLoadSong={props.onLoadSong}
+                            cookies={props.cookies}
+                          />
+                        </Col>
+                      </Row>
+                    </Fragment>
+                  ) : (
                     <Row className="edit-delete-btns">
-                      <Col xs={4} sm={3} md={2} lg={2}>
+                      <Col>
                         <EditLyricsModal
                           song={props.song}
                           onLoadSong={props.onLoadSong}
@@ -79,53 +99,35 @@ function SongDetailInfo(props) {
                           type={"edit"}
                         />
                       </Col>
-                      <Col xs={8} sm={9} md={10} lg={10}>
-                        <DeleteSongFetch
-                          song={props.song}
-                          onLoadSong={props.onLoadSong}
-                          cookies={props.cookies}
-                        />
-                      </Col>
                     </Row>
-                  </Fragment>
-                ) : (
-                  <Row className="edit-delete-btns">
-                    <Col>
-                      <EditLyricsModal
-                        song={props.song}
-                        onLoadSong={props.onLoadSong}
-                        cookies={props.cookies}
-                        type={"edit"}
-                      />
-                    </Col>
-                  </Row>
-                )}
-              </Fragment>
-            ) : null}
+                  )}
+                </Fragment>
+              ) : null}
 
-            <Row className="">
-              <Col lg={2}>
-                <p className="text-muted mb-0">ADDED BY</p>
-                <p className="purple">{props.song.user_str}</p>
-              </Col>
-              <Col lg={10} className="float-left">
-                <p className="text-muted mb-0">ON</p>
-                <p className="purple">{props.song.created_date_short}</p>
-              </Col>
-            </Row>
-
-            {props.song.edited ? (
-              <Row>
+              <Row className="">
                 <Col lg={2}>
-                  <p className="text-muted mb-0">EDITED BY</p>
-                  <p className="purple">{props.song.edited_by_user_str}</p>
+                  <p className="text-muted mb-0">ADDED BY</p>
+                  <p className="purple">{props.song.user_str}</p>
                 </Col>
                 <Col lg={10} className="float-left">
                   <p className="text-muted mb-0">ON</p>
-                  <p className="purple">{props.song.edited_date_short}</p>
+                  <p className="purple">{props.song.created_date_short}</p>
                 </Col>
               </Row>
-            ) : null}
+
+              {props.song.edited ? (
+                <Row>
+                  <Col lg={2}>
+                    <p className="text-muted mb-0">EDITED BY</p>
+                    <p className="purple">{props.song.edited_by_user_str}</p>
+                  </Col>
+                  <Col lg={10} className="float-left">
+                    <p className="text-muted mb-0">ON</p>
+                    <p className="purple">{props.song.edited_date_short}</p>
+                  </Col>
+                </Row>
+              ) : null}
+            </div>
           </Container>
         </React.Fragment>
       ) : (

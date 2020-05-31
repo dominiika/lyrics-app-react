@@ -70,16 +70,18 @@ function ArtistDetailInfo(props) {
               )}
             </Row>
 
-            {props.artist.user === Number(props.cookies.get("user")) ? (
-              <MainArtistModal
-                onLoadArtist={props.onLoadArtist}
-                artist={props.artist}
-                cookies={props.cookies}
-              />
-            ) : null}
+            <div className="more-info">
+              {props.artist.user === Number(props.cookies.get("user")) ? (
+                <MainArtistModal
+                  onLoadArtist={props.onLoadArtist}
+                  artist={props.artist}
+                  cookies={props.cookies}
+                />
+              ) : null}
 
-            <p className="text-muted mb-0">ADDED BY</p>
-            <p className="purple">{props.artist.user_str}</p>
+              <p className="text-muted mb-0">ADDED BY</p>
+              <p className="purple">{props.artist.user_str}</p>
+            </div>
           </Container>
         </React.Fragment>
       ) : (

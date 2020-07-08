@@ -34,6 +34,7 @@ function SongChart(props) {
                             className="img-front"
                             src={song.image}
                             alt="opps, something went wrong"
+                            srcSet={`${song.image} 68w, ${song.image} 48w`}
                           />
                         )}
                       </div>

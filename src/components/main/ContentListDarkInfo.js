@@ -31,6 +31,7 @@ function ContentListDarkInfo(props) {
                               className="img-fluid img-front"
                               src={artist.image}
                               alt="No content"
+                              srcSet={`${artist.image} 98w, ${artist.image} 118w, ${artist.image} 148w`}
                             />
                           )}
                         </div>
